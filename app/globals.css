@@ -3,82 +3,135 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-  font-weight: normal;
+  font-family: 'Chillax-Extralight';
+  src: url('./fonts/Chillax-Extralight.woff2') format('woff2'),
+       url('./fonts/Chillax-Extralight.woff') format('woff'),
+       url('./fonts/Chillax-Extralight.ttf') format('truetype');
+  font-weight: 200;
+  font-display: swap;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Bold.woff2') format('woff2');
-  font-weight: bold;
+  font-family: 'Chillax-Light';
+  src: url('./fonts/Chillax-Light.woff2') format('woff2'),
+       url('./fonts/Chillax-Light.woff') format('woff'),
+       url('./fonts/Chillax-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
   font-style: normal;
 }
-
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Italic.woff2') format('woff2');
-  font-weight: normal;
-  font-style: italic;
+  font-family: 'Chillax-Regular';
+  src: url('./fonts/Chillax-Regular.woff2') format('woff2'),
+       url('./fonts/Chillax-Regular.woff') format('woff'),
+       url('./fonts/Chillax-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax-Medium';
+  src: url('./fonts/Chillax-Medium.woff2') format('woff2'),
+       url('./fonts/Chillax-Medium.woff') format('woff'),
+       url('./fonts/Chillax-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax-Semibold';
+  src: url('./fonts/Chillax-Semibold.woff2') format('woff2'),
+       url('./fonts/Chillax-Semibold.woff') format('woff'),
+       url('./fonts/Chillax-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chillax-Bold';
+  src: url('./fonts/Chillax-Bold.woff2') format('woff2'),
+       url('./fonts/Chillax-Bold.woff') format('woff'),
+       url('./fonts/Chillax-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 700.0;
+*
+* available axes:
+'wght' (range from 200.0 to 700.0
+*/
+@font-face {
+  font-family: 'Chillax-Variable';
+  src: url('./fonts/Chillax-Variable.woff2') format('woff2'),
+       url('./fonts/Chillax-Variable.woff') format('woff'),
+       url('./fonts/Chillax-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
 }
 
 body {
-  font-family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+  font-family: 'Chillax-Variable', Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
 }
 
 @layer base {
-  
-
-  
-:root  {
-  --background: 241 38% 95%;
-  --foreground: 241 5% 10%;
-  --card: 241 38% 90%;
-  --card-foreground: 241 5% 15%;
-  --popover: 241 38% 95%;
-  --popover-foreground: 241 95% 10%;
-  --primary: 241 27% 43%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 241 30% 88%;
-  --secondary-foreground: 0 0% 0%;
-  --muted: 203 30% 88%;
-  --muted-foreground: 241 5% 40%;
-  --accent: 203 30% 88%;
-  --accent-foreground: 241 5% 15%;
-  --destructive: 0 50% 50%;
-  --destructive-foreground: 241 5% 90%;
-  --border: 241 30% 82%;
-  --input: 241 30% 50%;
-  --ring: 241 27% 43%;
-  --radius: 0.3rem;
-}
-.dark  {
-  --background: 241 38% 10%;
-  --foreground: 241 5% 90%;
-  --card: 241 38% 10%;
-  --card-foreground: 241 5% 90%;
-  --popover: 241 38% 5%;
-  --popover-foreground: 241 5% 90%;
-  --primary: 241 27% 43%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 241 30% 20%;
-  --secondary-foreground: 0 0% 100%;
-  --muted: 203 30% 25%;
-  --muted-foreground: 241 5% 65%;
-  --accent: 203 30% 25%;
-  --accent-foreground: 241 5% 90%;
-  --destructive: 0 50% 50%;
-  --destructive-foreground: 241 5% 90%;
-  --border: 241 30% 50%;
-  --input: 241 30% 50%;
-  --ring: 241 27% 43%;
-  --radius: 0.3rem;
-}
-
-  
-
+  :root  {
+    --background: 220 48% 95%;
+    --foreground: 220 5% 10%;
+    --card: 220 48% 90%;
+    --card-foreground: 220 5% 15%;
+    --popover: 220 48% 95%;
+    --popover-foreground: 220 95% 10%;
+    --primary: 220 32.5% 33.1%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 30% 86%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 182 30% 86%;
+    --muted-foreground: 220 5% 40%;
+    --accent: 182 30% 86%;
+    --accent-foreground: 220 5% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 220 5% 90%;
+    --border: 220 30% 82%;
+    --input: 220 30% 50%;
+    --ring: 220 32.5% 33.1%;
+    --radius: 0.3rem;
+    --heading: 260 53% 67%;
+    --tokyo-1: 224 89% 73%;
+    --tokyo-2: 24 100% 70%;
+    --tokyo-3: 355 100% 73%
+  }
+  .dark  {
+    --background: 220 48% 10%;
+    --foreground: 220 5% 90%;
+    --card: 220 48% 10%;
+    --card-foreground: 220 5% 90%;
+    --popover: 220 48% 5%;
+    --popover-foreground: 220 5% 90%;
+    --primary: 220 32.5% 33.1%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 30% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 182 30% 25%;
+    --muted-foreground: 220 5% 65%;
+    --accent: 182 30% 25%;
+    --accent-foreground: 220 5% 90%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 220 5% 90%;
+    --border: 220 30% 50%;
+    --input: 220 30% 50%;
+    --ring: 220 32.5% 33.1%;
+    --radius: 0.3rem;
+    --heading: 37 100% 73%;
+    --tokyo-1: 261 59% 67%;
+    --tokyo-2: 333 100% 50%;
+    --tokyo-3: 222 91% 73%;
+  }  
 }
 
 @layer base {

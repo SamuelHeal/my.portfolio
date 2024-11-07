@@ -1,0 +1,26 @@
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100%;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.hero-text-content {
+    text-align: left !important;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}

@@ -17,6 +17,12 @@
     // width: 20%;
 }
 
+.navigation-menu-icons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
 .navigation-dock {
     position: fixed;
     bottom: 0;
@@ -72,12 +78,12 @@
     height: 50px;
 }
 
-@media (max-width: 500px) {
-    .navigation {
-        padding: 15px 20px;
-        justify-content: center;
-    }
-    .navigation-menu {
+@media (max-width: 620px) {
+    // .navigation {
+    //     padding: 15px 20px;
+    //     justify-content: center;
+    // }
+    .navigation-menu-icons {
         display: none;
     }
 

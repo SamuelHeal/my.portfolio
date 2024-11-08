@@ -3,55 +3,55 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Chillax-Extralight';
-  src: url('./fonts/Chillax-Extralight.woff2') format('woff2'),
-       url('./fonts/Chillax-Extralight.woff') format('woff'),
-       url('./fonts/Chillax-Extralight.ttf') format('truetype');
+  font-family: "Chillax-Extralight";
+  src: url("./fonts/Chillax-Extralight.woff2") format("woff2"),
+    url("./fonts/Chillax-Extralight.woff") format("woff"),
+    url("./fonts/Chillax-Extralight.ttf") format("truetype");
   font-weight: 200;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Chillax-Light';
-  src: url('./fonts/Chillax-Light.woff2') format('woff2'),
-       url('./fonts/Chillax-Light.woff') format('woff'),
-       url('./fonts/Chillax-Light.ttf') format('truetype');
+  font-family: "Chillax-Light";
+  src: url("./fonts/Chillax-Light.woff2") format("woff2"),
+    url("./fonts/Chillax-Light.woff") format("woff"),
+    url("./fonts/Chillax-Light.ttf") format("truetype");
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Chillax-Regular';
-  src: url('./fonts/Chillax-Regular.woff2') format('woff2'),
-       url('./fonts/Chillax-Regular.woff') format('woff'),
-       url('./fonts/Chillax-Regular.ttf') format('truetype');
+  font-family: "Chillax-Regular";
+  src: url("./fonts/Chillax-Regular.woff2") format("woff2"),
+    url("./fonts/Chillax-Regular.woff") format("woff"),
+    url("./fonts/Chillax-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Chillax-Medium';
-  src: url('./fonts/Chillax-Medium.woff2') format('woff2'),
-       url('./fonts/Chillax-Medium.woff') format('woff'),
-       url('./fonts/Chillax-Medium.ttf') format('truetype');
+  font-family: "Chillax-Medium";
+  src: url("./fonts/Chillax-Medium.woff2") format("woff2"),
+    url("./fonts/Chillax-Medium.woff") format("woff"),
+    url("./fonts/Chillax-Medium.ttf") format("truetype");
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Chillax-Semibold';
-  src: url('./fonts/Chillax-Semibold.woff2') format('woff2'),
-       url('./fonts/Chillax-Semibold.woff') format('woff'),
-       url('./fonts/Chillax-Semibold.ttf') format('truetype');
+  font-family: "Chillax-Semibold";
+  src: url("./fonts/Chillax-Semibold.woff2") format("woff2"),
+    url("./fonts/Chillax-Semibold.woff") format("woff"),
+    url("./fonts/Chillax-Semibold.ttf") format("truetype");
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Chillax-Bold';
-  src: url('./fonts/Chillax-Bold.woff2') format('woff2'),
-       url('./fonts/Chillax-Bold.woff') format('woff'),
-       url('./fonts/Chillax-Bold.ttf') format('truetype');
+  font-family: "Chillax-Bold";
+  src: url("./fonts/Chillax-Bold.woff2") format("woff2"),
+    url("./fonts/Chillax-Bold.woff") format("woff"),
+    url("./fonts/Chillax-Bold.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
   font-style: normal;
@@ -65,22 +65,23 @@
 'wght' (range from 200.0 to 700.0
 */
 @font-face {
-  font-family: 'Chillax-Variable';
-  src: url('./fonts/Chillax-Variable.woff2') format('woff2'),
-       url('./fonts/Chillax-Variable.woff') format('woff'),
-       url('./fonts/Chillax-Variable.ttf') format('truetype');
+  font-family: "Chillax-Variable";
+  src: url("./fonts/Chillax-Variable.woff2") format("woff2"),
+    url("./fonts/Chillax-Variable.woff") format("woff"),
+    url("./fonts/Chillax-Variable.ttf") format("truetype");
   font-weight: 200 700;
   font-display: swap;
   font-style: normal;
 }
 
 body {
-  font-family: 'Chillax-Variable', Arial, Helvetica, sans-serif;
+  font-family: "Chillax-Variable", Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
+  margin: 0;
 }
 
 @layer base {
-  :root  {
+  :root {
     --background: 220 48% 95%;
     --foreground: 220 5% 10%;
     --card: 220 48% 90%;
@@ -104,9 +105,9 @@ body {
     --heading: 260 53% 67%;
     --tokyo-1: 224 89% 73%;
     --tokyo-2: 24 100% 70%;
-    --tokyo-3: 355 100% 73%
+    --tokyo-3: 355 100% 73%;
   }
-  .dark  {
+  .dark {
     --background: 220 48% 10%;
     --foreground: 220 5% 90%;
     --card: 220 48% 10%;
@@ -131,7 +132,7 @@ body {
     --tokyo-1: 261 59% 67%;
     --tokyo-2: 333 100% 50%;
     --tokyo-3: 222 91% 73%;
-  }  
+  }
 }
 
 @layer base {

@@ -16,7 +16,7 @@
   justify-content: top;
   align-items: center;
   height: 80vh;
-  //   width: 100vw;
+  width: 100vw;
 }
 
 .layer {
@@ -86,4 +86,19 @@
 
 .tokyo-3::placeholder {
   color: hsl(var(--tokyo-3));
+}
+
+@media (max-width: 1260px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    width: 90%;
+  }
+
+  .hero-text-content {
+    text-align: center !important;
+    margin-bottom: 2rem;
+  }
 }

@@ -69,6 +69,34 @@ function Page() {
             colour: "tokyo-3",
             name: "My Mum",
           },
+          {
+            id: 5,
+            text: "Incredibly talented!   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-1",
+            name: "Best Friend #3",
+          },
+          {
+            id: 6,
+            text: "Always inspiring others   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-2",
+            name: "Best Friend #4",
+          },
+          {
+            id: 7,
+            text: "Brilliantly creative   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-3",
+            name: "My Dad",
+          },
+          {
+            id: 8,
+            text: "Endlessly supportive   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-3",
+            name: "My Sister",
+          },
         ];
   });
 
@@ -115,16 +143,17 @@ function Page() {
   return (
     <div className="hero">
       <div className="hero-background">
-        <div className="layer">
-          <RandomTextDisplay initalItems={messages} />
-        </div>
+        <RandomTextDisplay initalItems={messages} />
       </div>
       <div className="hero-text">
         <div className="hero-text-content">
-          <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-9xl text-tokyo-1">
-            Hello World, I'm <span className="text-tokyo-2">Sam</span>
+          <h1 className="scroll-m-20 font-extrabold tracking-tight text-7xl lg:text-9xl text-tokyo-1">
+            Hello World,
           </h1>
-          <h2 className="mt-6 text-3xl lg:text-6xl text-tokyo-3">
+          <h1 className="scroll-m-20 font-extrabold tracking-tight text-7xl lg:text-9xl text-tokyo-1">
+            I'm <span className="text-tokyo-2">Sam</span>
+          </h1>
+          <h2 className="mt-6 text-5xl lg:text-6xl text-tokyo-3">
             I do software
           </h2>
         </div>

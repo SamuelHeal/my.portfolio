@@ -16,12 +16,12 @@ interface Position {
 }
 
 type TextSize =
+  | "text-sm"
+  | "text-md"
   | "text-lg"
   | "text-xl"
   | "text-2xl"
-  | "text-3xl"
-  | "text-4xl"
-  | "text-5xl";
+  | "text-3xl";
 
 const RandomTextDisplay: React.FC<{
   initalItems: Item[];
@@ -40,12 +40,12 @@ const RandomTextDisplay: React.FC<{
   // Generate random text size
   const getRandomTextSize = (): TextSize => {
     const sizes: TextSize[] = [
+      "text-sm",
+      "text-md",
       "text-lg",
       "text-xl",
       "text-2xl",
       "text-3xl",
-      "text-4xl",
-      "text-5xl",
     ];
     return sizes[Math.floor(Math.random() * sizes.length)];
   };
@@ -56,14 +56,20 @@ const RandomTextDisplay: React.FC<{
     fontSize: TextSize
   ): { width: number; height: number } => {
     const baseSize: Record<TextSize, number> = {
-      "text-lg": 20,
-      "text-xl": 24,
-      "text-2xl": 30,
-      "text-3xl": 36,
-      "text-4xl": 48,
-      "text-5xl": 60,
+      "text-sm":
+        window.innerWidth < 768 ? 12 : window.innerWidth < 1024 ? 16 : 20,
+      "text-md":
+        window.innerWidth < 768 ? 20 : window.innerWidth < 1024 ? 26 : 32,
+      "text-lg":
+        window.innerWidth < 768 ? 28 : window.innerWidth < 1024 ? 36 : 44,
+      "text-xl":
+        window.innerWidth < 768 ? 36 : window.innerWidth < 1024 ? 46 : 56,
+      "text-2xl":
+        window.innerWidth < 768 ? 44 : window.innerWidth < 1024 ? 56 : 68,
+      "text-3xl":
+        window.innerWidth < 768 ? 52 : window.innerWidth < 1024 ? 66 : 80,
     };
-    const size = baseSize[fontSize] || 24;
+    const size = baseSize[fontSize];
     return {
       width: text.length * (size * 0.6), // Approximate width based on character count
       height: size * 1.2, // Approximate height with some line height
@@ -108,7 +114,10 @@ const RandomTextDisplay: React.FC<{
   ): Record<number, Position> => {
     const newPositions: Record<number, Position> = {};
     const newTextSizes: Record<number, TextSize> = {};
-    const containerWidth = window.innerWidth * 0.9; // 90% of viewport width to ensure padding
+    const containerWidth =
+      window.innerWidth < 768
+        ? window.innerWidth * 1.5 // 1.5 to ensure that the text is spread out across the screen
+        : window.innerWidth * 1; // 1 to ensure that the text is spread out across the screen
     const containerHeight = window.innerHeight * 0.7; // 70% of viewport height to ensure padding
 
     (currentItems || []).forEach((item) => {
@@ -146,17 +155,21 @@ const RandomTextDisplay: React.FC<{
     moveText();
   }, [items]);
 
+  useEffect(() => {
+    window.addEventListener("resize", moveText, false);
+  }, []);
+
   function resetItems() {
     setItems(savedItems);
     localStorage.setItem("messages", JSON.stringify(savedItems));
   }
 
   return (
-    <div className="absolute top-0 left-0 h-[80vh] w-screen overflow-hidden p-8">
+    <div className="absolute top-0 left-0 h-[80vh] w-full overflow-hidden">
       {items?.map((item) => (
         <div
           key={item.id}
-          className={`flex flex-col absolute transition-all duration-500 ease-in-out cursor-pointer hover:scale-110 text-${
+          className={`flex flex-col absolute transition-all duration-500 ease-in-out text-${
             item.colour
           } font-${item.style.bold ? "bold" : "normal"} ${
             item.style.italic ? "italic" : "not-italic"

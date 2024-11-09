@@ -10,6 +10,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Smile } from "lucide-react";
+
 import RandomTextDisplay from "./Messages/page";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -29,29 +36,43 @@ function Page() {
     ...englishRecommendedTransformers,
   });
 
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      text: "Wow you are so cool!   ",
-      style: { bold: false, italic: false, underline: false },
-      colour: "tokyo-1",
-      name: "John",
-    },
-    {
-      id: 2,
-      text: "Wow you are so cool!   ",
-      style: { bold: false, italic: false, underline: false },
-      colour: "tokyo-2",
-      name: "John",
-    },
-    {
-      id: 3,
-      text: "Wow you are so cool!   ",
-      style: { bold: false, italic: false, underline: false },
-      colour: "tokyo-3",
-      name: "John",
-    },
-  ]);
+  const [messages, setMessages] = useState(() => {
+    const savedMessages = localStorage.getItem("messages");
+    return savedMessages
+      ? JSON.parse(savedMessages)
+      : [
+          {
+            id: 1,
+            text: "Passionate!   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-1",
+            name: "Best Friend #1",
+          },
+          {
+            id: 2,
+            text: "A cool dude   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-2",
+            name: "Best Friend #2",
+          },
+          {
+            id: 3,
+            text: "A nerd beyond belief   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-3",
+            name: "My Girlfriend",
+          },
+          {
+            id: 4,
+            text: "Such a beautiful soul   ",
+            style: { bold: false, italic: false, underline: false },
+            colour: "tokyo-3",
+            name: "My Mum",
+          },
+        ];
+  });
+
+  localStorage.setItem("messages", JSON.stringify(messages));
 
   const [input, setInput] = useState("Wow you are so cool!");
   const [style, setStyle] = useState({
@@ -81,6 +102,7 @@ function Page() {
       ...messages,
       { id: messages.length + 1, text: sendText, style, colour, name },
     ]);
+    localStorage.setItem("messages", JSON.stringify(messages));
   }
 
   const classes = (message: any) =>
@@ -94,11 +116,6 @@ function Page() {
     <div className="hero">
       <div className="hero-background">
         <div className="layer">
-          {/* {messages.map((message) => (
-            <div key={message.id} className={classes(message)}>
-              {message.text}
-            </div>
-          ))} */}
           <RandomTextDisplay initalItems={messages} />
         </div>
       </div>
@@ -113,9 +130,6 @@ function Page() {
         </div>
       </div>
       <div className="hero-image">
-        {/* <div className="hero-image-content">
-          <p>image here</p>
-        </div> */}
         <div className="hero-image-form">
           <Card className="w-[350px]">
             <CardHeader>
@@ -129,6 +143,7 @@ function Page() {
                       <ToggleGroupItem
                         value="bold"
                         aria-label="Toggle bold"
+                        className="data-[state=on]:border-heading hover:bg-heading hover:text-primary"
                         onClick={() =>
                           setStyle({ ...style, bold: !style.bold })
                         }
@@ -138,6 +153,7 @@ function Page() {
                       <ToggleGroupItem
                         value="italic"
                         aria-label="Toggle italic"
+                        className="data-[state=on]:border-heading hover:bg-heading hover:text-primary"
                         onClick={() =>
                           setStyle({ ...style, italic: !style.italic })
                         }
@@ -147,6 +163,7 @@ function Page() {
                       <ToggleGroupItem
                         value="underline"
                         aria-label="Toggle underline"
+                        className="data-[state=on]:border-heading hover:bg-heading hover:text-primary"
                         onClick={() =>
                           setStyle({ ...style, underline: !style.underline })
                         }
@@ -156,21 +173,21 @@ function Page() {
                       <ToggleGroupItem
                         value="tokyo-1"
                         aria-label="Toggle colour"
-                        className="bg-tokyo-1 hover:bg-tokyo-1/80"
+                        className="bg-tokyo-1 hover:bg-tokyo-1/80 data-[state=on]:bg-tokyo-1/80 data-[state=on]:border-heading"
                         data-state={colour === "tokyo-1" ? "on" : "off"}
                         onClick={() => setColour("tokyo-1")}
                       ></ToggleGroupItem>
                       <ToggleGroupItem
                         value="tokyo-2"
                         aria-label="Toggle colour"
-                        className="bg-tokyo-2 hover:bg-tokyo-2/80"
+                        className="bg-tokyo-2 hover:bg-tokyo-2/80 data-[state=on]:bg-tokyo-2/80 data-[state=on]:border-heading"
                         data-state={colour === "tokyo-2" ? "on" : "off"}
                         onClick={() => setColour("tokyo-2")}
                       ></ToggleGroupItem>
                       <ToggleGroupItem
                         value="tokyo-3"
                         aria-label="Toggle colour"
-                        className="bg-tokyo-3 hover:bg-tokyo-3/80"
+                        className="bg-tokyo-3 hover:bg-tokyo-3/80 data-[state=on]:bg-tokyo-3/80 data-[state=on]:border-heading"
                         data-state={colour === "tokyo-3" ? "on" : "off"}
                         onClick={() => setColour("tokyo-3")}
                       ></ToggleGroupItem>
@@ -181,6 +198,11 @@ function Page() {
                       id="message"
                       placeholder={input}
                       onChange={(e) => setInput(e.target.value)}
+                      className={`${style.bold ? "bold" : ""} ${
+                        style.italic ? "italic" : ""
+                      } ${style.underline ? "underline" : ""} ${
+                        colour ? `${colour}` : ""
+                      }`}
                     />
                   </div>
                   <div className="flex flex-col space-y-1.5">
@@ -202,6 +224,15 @@ function Page() {
               >
                 Send
               </Button>
+              <Popover>
+                <PopoverTrigger>?</PopoverTrigger>
+                <PopoverContent>
+                  To prevent spam flooding my page, your message will first be
+                  saved in your browser's local storage, and will be included in
+                  the site's database after I have read it myself. Profanity
+                  will be either automatically or manually censored.
+                </PopoverContent>
+              </Popover>
             </CardFooter>
           </Card>
         </div>

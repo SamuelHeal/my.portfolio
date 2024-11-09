@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button";
 import React, { useState, useEffect } from "react";
+import { X, RefreshCcw } from "lucide-react";
 
 interface Item {
   id: number;
@@ -21,9 +23,9 @@ type TextSize =
   | "text-4xl"
   | "text-5xl";
 
-const RandomTextDisplay: React.FC<{ initalItems: Item[] }> = ({
-  initalItems,
-}) => {
+const RandomTextDisplay: React.FC<{
+  initalItems: Item[];
+}> = ({ initalItems }) => {
   // Sample initial data
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const RandomTextDisplay: React.FC<{ initalItems: Item[] }> = ({
   }, [initalItems]);
 
   const [items, setItems] = useState<Item[]>(initalItems);
+  const [savedItems, setSavedItems] = useState<Item[]>(initalItems);
   const [positions, setPositions] = useState<Record<number, Position>>({});
   const [textSizes, setTextSizes] = useState<Record<number, TextSize>>({});
 
@@ -134,22 +137,19 @@ const RandomTextDisplay: React.FC<{ initalItems: Item[] }> = ({
     return newPositions;
   };
 
+  function moveText() {
+    setPositions(generatePositions(items));
+  }
+
   // Update positions when items change
   useEffect(() => {
-    setPositions(generatePositions(items));
+    moveText();
   }, [items]);
 
-  // Function to add new item
-  const addNewItem = (item: Item) => {
-    const newItem: Item = {
-      id: items.length + 1,
-      text: item.text,
-      style: item.style,
-      colour: item.colour,
-      name: item.name,
-    };
-    setItems([...items, newItem]);
-  };
+  function resetItems() {
+    setItems(savedItems);
+    localStorage.setItem("messages", JSON.stringify(savedItems));
+  }
 
   return (
     <div className="absolute top-0 left-0 h-[80vh] w-screen overflow-hidden p-8">
@@ -173,6 +173,12 @@ const RandomTextDisplay: React.FC<{ initalItems: Item[] }> = ({
           <span className="text-xs">- {item.name}</span>
         </div>
       ))}
+      <Button className="absolute bottom-0 right-5" onClick={resetItems}>
+        <X className="h-4 w-4" />
+      </Button>
+      <Button className="absolute bottom-0 right-20" onClick={moveText}>
+        <RefreshCcw className="h-4 w-4" />
+      </Button>
     </div>
   );
 };

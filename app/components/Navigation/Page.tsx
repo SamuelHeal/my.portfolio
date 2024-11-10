@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-function Page({ theme }: { theme: string }) {
+function page({ theme }: { theme: string }) {
   const { setTheme } = useTheme();
 
   const redirect = (location: string) => {
@@ -123,4 +123,4 @@ function Page({ theme }: { theme: string }) {
   );
 }
 
-export default Page;
+export default page;

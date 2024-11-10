@@ -135,6 +135,25 @@ body {
   }
 }
 
+.svg-background {
+  position: absolute;
+  top: 60vh;
+  left: 0;
+  width: 100vw
+}
+
+.svg-background svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.svg-background path {
+    fill: hsl(var(--heading));
+    
+}
+
+
 @layer base {
   * {
     @apply border-border;

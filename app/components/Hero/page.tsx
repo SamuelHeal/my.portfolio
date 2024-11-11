@@ -174,20 +174,20 @@ function Page() {
       </div>
       <div className="hero-text">
         <div className="hero-text-content">
-          <h1 className="scroll-m-20 font-extrabold tracking-tight text-7xl lg:text-9xl text-tokyo-1">
+          <h1 className="scroll-m-20 font-extrabold tracking-tight text-5xl md:text-7xl lg:text-9xl text-tokyo-1">
             Hello World,
           </h1>
-          <h1 className="scroll-m-20 font-extrabold tracking-tight text-7xl lg:text-9xl text-tokyo-1">
+          <h1 className="scroll-m-20 font-extrabold tracking-tight text-5xl md:text-7xl lg:text-9xl text-tokyo-1">
             I'm <span className="text-tokyo-2">Sam</span>
           </h1>
-          <h2 className="mt-6 text-5xl lg:text-6xl text-tokyo-3">
+          <h2 className="mt-6 text-3xl md:text-4xl lg:text-6xl text-tokyo-3">
             I do software
           </h2>
         </div>
       </div>
       <div className="hero-image">
         <div className="hero-image-form">
-          <Card className="w-[350px]">
+          <Card className="w-[80%] hero-card">
             <CardHeader>
               <CardTitle>Leave me a message!</CardTitle>
             </CardHeader>
@@ -254,11 +254,11 @@ function Page() {
                       id="message"
                       placeholder={input}
                       onChange={(e) => setInput(e.target.value)}
-                      className={`${style.bold ? "bold" : ""} ${
-                        style.italic ? "italic" : ""
-                      } ${style.underline ? "underline" : ""} ${
-                        colour ? `${colour}` : ""
-                      }`}
+                      className={`text-sm md:text-md lg:text-md ${
+                        style.bold ? "bold" : ""
+                      } ${style.italic ? "italic" : ""} ${
+                        style.underline ? "underline" : ""
+                      } ${colour ? `${colour}` : ""}`}
                     />
                   </div>
                   <div className="flex flex-col space-y-1.5">
@@ -266,6 +266,7 @@ function Page() {
                       id="name"
                       placeholder="Your name"
                       onChange={(e) => setName(e.target.value)}
+                      className="text-sm md:text-md lg:text-md"
                     />
                   </div>
                 </div>

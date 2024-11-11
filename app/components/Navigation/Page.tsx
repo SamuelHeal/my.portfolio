@@ -80,19 +80,6 @@ function Page({ theme }: { theme: string }) {
             <Button className="mx-2 my-4">
               <FileUser />
             </Button>
-            <Button
-              className="mx-2 my-4"
-              variant="secondary"
-              onClick={() => {
-                setTheme(theme === "light" ? "dark" : "light");
-              }}
-            >
-              {theme === "light" ? (
-                <Moon className="h-[1.2rem] w-[1.2rem] hover:bg-tokyo-1" />
-              ) : (
-                <Sun className="h-[1.2rem] w-[1.2rem] hover:text-tokyo-1" />
-              )}
-            </Button>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ export const BackgroundOne = () => {
   const pathRef = useRef(null);
   const pathRef2 = useRef(null);
   const pathRef3 = useRef(null);
+  const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
   const animatedRef = useRef(false);
 
@@ -31,7 +32,19 @@ export const BackgroundOne = () => {
     const handleScroll = () => {
       if (animatedRef.current) return;
 
-      const progress = Math.min(scrollYProgress.get() * 20, 1);
+      const scrollPosition = scrollY.get();
+      const scrollProgress = scrollYProgress.get();
+      const windowHeight = window.innerHeight;
+      if (window.innerWidth < 620) {
+        if (scrollPosition < windowHeight * 0.1) return;
+      }
+
+      const progress = Math.min(
+        window.innerWidth < 620
+          ? scrollPosition - windowHeight * 0.1
+          : Math.min(scrollProgress * 20, 1),
+        1
+      );
       const drawLength = length * progress;
       (path as SVGPathElement).style.strokeDashoffset = (
         length - drawLength
@@ -56,12 +69,12 @@ export const BackgroundOne = () => {
       }
     };
 
-    const unsubscribe = scrollYProgress.onChange(handleScroll);
+    const unsubscribe = scrollY.on("change", handleScroll);
 
     return () => {
       unsubscribe();
     };
-  }, [scrollYProgress]);
+  }, [scrollY]);
 
   return (
     <div className="svg-background">
@@ -141,9 +154,18 @@ export const BackgroundTwo = () => {
 
       const scrollPosition = scrollY.get();
       const windowHeight = window.innerHeight;
-      if (scrollPosition < windowHeight * 1.2) return;
+      if (window.innerWidth < 620) {
+        if (scrollPosition < windowHeight * 1.4) return;
+      } else {
+        if (scrollPosition < windowHeight * 1.2) return;
+      }
 
-      const progress = Math.min((scrollPosition - windowHeight * 1.2) / 100, 1);
+      const progress = Math.min(
+        (window.innerWidth < 620
+          ? scrollPosition - windowHeight * 1.4
+          : scrollPosition - windowHeight * 1.2) / 100,
+        1
+      );
       const drawLength = length * progress;
       (path as SVGPathElement).style.strokeDashoffset = (
         length - drawLength
@@ -253,9 +275,18 @@ export const BackgroundThree = () => {
 
       const scrollPosition = scrollY.get();
       const windowHeight = window.innerHeight;
-      if (scrollPosition < windowHeight * 2.1) return;
+      if (window.innerWidth < 620) {
+        if (scrollPosition < windowHeight * 2.3) return;
+      } else {
+        if (scrollPosition < windowHeight * 2.1) return;
+      }
 
-      const progress = Math.min((scrollPosition - windowHeight * 2.1) / 200, 1);
+      const progress = Math.min(
+        (window.innerWidth < 620
+          ? scrollPosition - windowHeight * 2.3
+          : scrollPosition - windowHeight * 2.1) / 200,
+        1
+      );
       const drawLength = length * progress;
       (path as SVGPathElement).style.strokeDashoffset = (
         length - drawLength
@@ -377,9 +408,18 @@ export const BackgroundFour = () => {
 
       const scrollPosition = scrollY.get();
       const windowHeight = window.innerHeight;
-      if (scrollPosition < windowHeight * 3) return;
+      if (window.innerWidth < 620) {
+        if (scrollPosition < windowHeight * 3.4) return;
+      } else {
+        if (scrollPosition < windowHeight * 3.2) return;
+      }
 
-      const progress = Math.min((scrollPosition - windowHeight * 3) / 300, 1);
+      const progress = Math.min(
+        (window.innerWidth < 620
+          ? scrollPosition - windowHeight * 3.4
+          : scrollPosition - windowHeight * 3.2) / 300,
+        1
+      );
       const drawLength = length * progress;
       (path as SVGPathElement).style.strokeDashoffset = (
         length - drawLength

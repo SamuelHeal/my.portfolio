@@ -67,8 +67,8 @@ export const BackgroundOne = () => {
     <div className="svg-background">
       <svg
         width="1054"
-        height="1898"
-        viewBox="0 0 1054 1898"
+        height="300"
+        viewBox="0 0 1054 300"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -141,9 +141,9 @@ export const BackgroundTwo = () => {
 
       const scrollPosition = scrollY.get();
       const windowHeight = window.innerHeight;
-      if (scrollPosition < windowHeight * 1.7) return;
+      if (scrollPosition < windowHeight * 1.2) return;
 
-      const progress = Math.min((scrollPosition - windowHeight * 1.7) / 300, 1);
+      const progress = Math.min((scrollPosition - windowHeight * 1.2) / 100, 1);
       const drawLength = length * progress;
       (path as SVGPathElement).style.strokeDashoffset = (
         length - drawLength
@@ -176,11 +176,11 @@ export const BackgroundTwo = () => {
   }, [scrollY]);
 
   return (
-    <div className="svg-background">
+    <div className="svg-background svg-background-two">
       <svg
         width="1054"
-        height="1898"
-        viewBox="0 0 1054 1898"
+        height="400"
+        viewBox="0 0 1054 400"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -253,9 +253,9 @@ export const BackgroundThree = () => {
 
       const scrollPosition = scrollY.get();
       const windowHeight = window.innerHeight;
-      if (scrollPosition < windowHeight * 3.4) return;
+      if (scrollPosition < windowHeight * 2.1) return;
 
-      const progress = Math.min((scrollPosition - windowHeight * 3.4) / 300, 1);
+      const progress = Math.min((scrollPosition - windowHeight * 2.1) / 200, 1);
       const drawLength = length * progress;
       (path as SVGPathElement).style.strokeDashoffset = (
         length - drawLength
@@ -288,11 +288,11 @@ export const BackgroundThree = () => {
   }, [scrollY]);
 
   return (
-    <div className="svg-background">
+    <div className="svg-background svg-background-three">
       <svg
         width="1054"
-        height="1898"
-        viewBox="0 0 1054 1898"
+        height="300"
+        viewBox="0 0 1054 300"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -376,9 +376,10 @@ export const BackgroundFour = () => {
       if (animatedRef.current) return;
 
       const scrollPosition = scrollY.get();
-      if (scrollPosition < 2800) return;
+      const windowHeight = window.innerHeight;
+      if (scrollPosition < windowHeight * 3) return;
 
-      const progress = Math.min((scrollPosition - 2100) / 300, 1);
+      const progress = Math.min((scrollPosition - windowHeight * 3) / 300, 1);
       const drawLength = length * progress;
       (path as SVGPathElement).style.strokeDashoffset = (
         length - drawLength
@@ -421,11 +422,11 @@ export const BackgroundFour = () => {
   }, [scrollY]);
 
   return (
-    <div className="svg-background">
+    <div className="svg-background svg-background-four">
       <svg
         width="1054"
-        height="1898"
-        viewBox="0 0 1054 1898"
+        height="500"
+        viewBox="0 0 1054 500"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

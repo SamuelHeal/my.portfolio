@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-function page({ theme }: { theme: string }) {
+function Page({ theme }: { theme: string }) {
   const { setTheme } = useTheme();
 
   const redirect = (location: string) => {
@@ -63,59 +63,36 @@ function page({ theme }: { theme: string }) {
       <div className="navigation-dock">
         <div className="sticky-container">
           <div className="sticky">
-            <a
-              href="https://github.com/SamuelHeal"
-              target="_blank"
-              rel="noreferrer"
-              className="socialIcon"
+            <Button
+              className="mx-2 my-4"
+              variant="outline"
+              onClick={() => redirect("https://github.com/SamuelHeal")}
             >
-              <Button
-                className="mx-1"
-                variant="outline"
-                onClick={() => redirect("https://github.com/SamuelHeal")}
-              >
-                <Github />
-              </Button>
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=100008027059320"
-              target="_blank"
-              rel="noreferrer"
-              className="socialIcon seperator"
+              <Github />
+            </Button>
+            <Button
+              className="mx-2 my-4 hover:bg-tokyo-2"
+              variant="outline"
+              onClick={() => redirect("mailto:samuel.j.heal@gmail.com")}
             >
-              <Button
-                className="mx-1"
-                variant="outline"
-                onClick={() => redirect("mailto:samuel.j.heal@gmail.com")}
-              >
-                <MailOpen />
-              </Button>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/samuel-heal-374b92204/"
-              target="_blank"
-              rel="noreferrer"
-              className="socialIcon"
+              <MailOpen />
+            </Button>
+            <Button className="mx-2 my-4">
+              <FileUser />
+            </Button>
+            <Button
+              className="mx-2 my-4"
+              variant="secondary"
+              onClick={() => {
+                setTheme(theme === "light" ? "dark" : "light");
+              }}
             >
-              <Button className="mx-1">
-                <FileUser />
-              </Button>
-            </a>
-            <a className="socialIcon">
-              <Button
-                className="mx-1"
-                variant="secondary"
-                onClick={() => {
-                  setTheme(theme === "dark" ? "light" : "dark");
-                }}
-              >
-                {theme === "light" ? (
-                  <Moon className="h-[1.2rem] w-[1.2rem] hover:bg-tokyo-1" />
-                ) : (
-                  <Sun className="h-[1.2rem] w-[1.2rem] hover:text-tokyo-1" />
-                )}
-              </Button>
-            </a>
+              {theme === "light" ? (
+                <Moon className="h-[1.2rem] w-[1.2rem] hover:bg-tokyo-1" />
+              ) : (
+                <Sun className="h-[1.2rem] w-[1.2rem] hover:text-tokyo-1" />
+              )}
+            </Button>
           </div>
         </div>
       </div>
@@ -123,4 +100,4 @@ function page({ theme }: { theme: string }) {
   );
 }
 
-export default page;
+export default Page;

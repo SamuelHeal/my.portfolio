@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { X, RefreshCcw } from "lucide-react";
 
 interface Item {
@@ -25,17 +25,24 @@ type TextSize =
 
 const RandomTextDisplay: React.FC<{
   initalItems: Item[];
-}> = ({ initalItems }) => {
-  // Sample initial data
+  onReset: (resetFunc: () => void) => void;
+  onMove: (moveFunc: () => void) => void;
+}> = ({ initalItems, onReset, onMove }) => {
+  const [items, setItems] = useState<Item[]>([]);
+  const [savedItems, setSavedItems] = useState<Item[]>([]);
+  const [positions, setPositions] = useState<Record<number, Position>>({});
+  const [textSizes, setTextSizes] = useState<Record<number, TextSize>>({});
+
+  const resetFunctionRef = useRef<(() => void) | null>(null);
+  const moveFunctionRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     setItems(initalItems);
+    setSavedItems(initalItems);
+    if (initalItems.length > 0) {
+      setPositions(generatePositions(initalItems));
+    }
   }, [initalItems]);
-
-  const [items, setItems] = useState<Item[]>(initalItems);
-  const [savedItems, setSavedItems] = useState<Item[]>(initalItems);
-  const [positions, setPositions] = useState<Record<number, Position>>({});
-  const [textSizes, setTextSizes] = useState<Record<number, TextSize>>({});
 
   // Generate random text size
   const getRandomTextSize = (): TextSize => {
@@ -146,23 +153,35 @@ const RandomTextDisplay: React.FC<{
     return newPositions;
   };
 
-  function moveText() {
-    setPositions(generatePositions(items));
-  }
-
-  // Update positions when items change
-  useEffect(() => {
-    moveText();
-  }, [items]);
-
-  useEffect(() => {
-    window.addEventListener("resize", moveText, false);
-  }, []);
-
-  function resetItems() {
+  const resetItems = () => {
     setItems(savedItems);
     localStorage.setItem("messages", JSON.stringify(savedItems));
-  }
+  };
+
+  // Add moveText to useCallback to maintain reference stability
+  const moveText = useCallback(() => {
+    if (items.length > 0) {
+      setPositions(generatePositions(items));
+    }
+  }, [items]);
+
+  // Update resize event listener with cleanup
+  useEffect(() => {
+    window.addEventListener("resize", moveText);
+    return () => window.removeEventListener("resize", moveText);
+  }, [moveText]); // Add moveText as dependency
+
+  // Update reset function effect
+  useEffect(() => {
+    resetFunctionRef.current = resetItems;
+    onReset(resetItems);
+  }, [onReset, resetItems]); // Add onReset as dependency
+
+  // Update move function effect
+  useEffect(() => {
+    moveFunctionRef.current = moveText;
+    onMove(moveText);
+  }, [onMove, moveText]); // Add onMove as dependency
 
   return (
     <div className="absolute top-0 left-0 h-[80vh] w-full overflow-hidden">
@@ -186,12 +205,6 @@ const RandomTextDisplay: React.FC<{
           <span className="text-xs">- {item.name}</span>
         </div>
       ))}
-      <Button className="absolute bottom-0 right-5" onClick={resetItems}>
-        <X className="h-4 w-4" />
-      </Button>
-      <Button className="absolute bottom-0 right-20" onClick={moveText}>
-        <RefreshCcw className="h-4 w-4" />
-      </Button>
     </div>
   );
 };

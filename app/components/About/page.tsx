@@ -1,11 +1,11 @@
 import React from "react";
-import { BackgroundTwo } from "../Background/page";
-import "./skills.scss";
+import { BackgroundOne } from "../Background/page";
+import "./about.scss";
 
 function Page() {
   return (
-    <div className="relative w-screen skills-container">
-      <BackgroundTwo />
+    <div className="relative w-screen about-container">
+      <BackgroundOne />
       <div>
         <div className="flex flex-col items-center justify-center">
           {/* <h1 className="text-4xl font-bold">About</h1> */}

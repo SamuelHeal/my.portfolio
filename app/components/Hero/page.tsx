@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./hero.scss";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,12 +15,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Smile } from "lucide-react";
 
 import RandomTextDisplay from "./Messages/page";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Bold, Italic, Underline } from "lucide-react";
+import {
+  Bold,
+  Italic,
+  Underline,
+  RefreshCcw,
+  X,
+  HelpCircle,
+} from "lucide-react";
 
 import {
   RegExpMatcher,
@@ -35,6 +41,8 @@ function Page() {
     ...englishDataset.build(),
     ...englishRecommendedTransformers,
   });
+  const resetFunctionRef = useRef<(() => void) | null>(null);
+  const moveFunctionRef = useRef<(() => void) | null>(null);
 
   const [messages, setMessages] = useState(() => {
     const savedMessages = localStorage.getItem("messages");
@@ -100,7 +108,9 @@ function Page() {
         ];
   });
 
-  localStorage.setItem("messages", JSON.stringify(messages));
+  useEffect(() => {
+    localStorage.setItem("messages", JSON.stringify(messages));
+  }, [messages]);
 
   const [input, setInput] = useState("Wow you are so cool!");
   const [style, setStyle] = useState({
@@ -126,11 +136,12 @@ function Page() {
     const newInput = censor.applyTo(text, matches);
     const sendText = newInput + "   ";
 
-    setMessages([
+    const newMessages = [
       ...messages,
       { id: messages.length + 1, text: sendText, style, colour, name },
-    ]);
-    localStorage.setItem("messages", JSON.stringify(messages));
+    ];
+
+    setMessages(newMessages);
   }
 
   const classes = (message: any) =>
@@ -140,10 +151,26 @@ function Page() {
       message.style.underline ? "underline" : "no-underline"
     } text-3xl lg:text-6xl m-4`;
 
+  const handleReset = () => {
+    if (resetFunctionRef.current) {
+      resetFunctionRef.current();
+    }
+  };
+
+  const handleMove = () => {
+    if (moveFunctionRef.current) {
+      moveFunctionRef.current();
+    }
+  };
+
   return (
     <div className="hero">
       <div className="hero-background">
-        <RandomTextDisplay initalItems={messages} />
+        <RandomTextDisplay
+          initalItems={messages}
+          onReset={(fn) => (resetFunctionRef.current = fn)}
+          onMove={(fn) => (moveFunctionRef.current = fn)}
+        />
       </div>
       <div className="hero-text">
         <div className="hero-text-content">
@@ -253,15 +280,27 @@ function Page() {
               >
                 Send
               </Button>
-              <Popover>
-                <PopoverTrigger>?</PopoverTrigger>
-                <PopoverContent>
-                  To prevent spam flooding my page, your message will first be
-                  saved in your browser's local storage, and will be included in
-                  the site's database after I have read it myself. Profanity
-                  will be either automatically or manually censored.
-                </PopoverContent>
-              </Popover>
+              <div className="flex gap-2">
+                <Button onClick={handleReset}>
+                  <X className="h-4 w-4" />
+                </Button>
+
+                <Button onClick={handleMove}>
+                  <RefreshCcw className="h-4 w-4" />
+                </Button>
+
+                <Popover>
+                  <PopoverTrigger className="mx-2">
+                    <HelpCircle className="h-4 w-4" />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    To prevent spam flooding my page, your message will first be
+                    saved in your browser's local storage, and will be included
+                    in the site's database after I have read it myself.
+                    Profanity will be either automatically or manually censored.
+                  </PopoverContent>
+                </Popover>
+              </div>
             </CardFooter>
           </Card>
         </div>

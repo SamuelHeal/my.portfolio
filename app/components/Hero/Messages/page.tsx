@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { X, RefreshCcw } from "lucide-react";
 
 interface Item {
   id: number;
@@ -37,12 +35,19 @@ const RandomTextDisplay: React.FC<{
   const moveFunctionRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    setItems(initalItems);
     setSavedItems(initalItems);
+  }, []);
+
+  useEffect(() => {
+    setItems(initalItems);
     if (initalItems.length > 0) {
       setPositions(generatePositions(initalItems));
     }
   }, [initalItems]);
+
+  useEffect(() => {
+    setPositions(generatePositions(items));
+  }, [items]);
 
   // Generate random text size
   const getRandomTextSize = (): TextSize => {

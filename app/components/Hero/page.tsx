@@ -144,13 +144,6 @@ function Page() {
     setMessages(newMessages);
   }
 
-  const classes = (message: any) =>
-    `w-full text-${message.colour} font-${
-      message.style.bold ? "bold" : "normal"
-    } ${message.style.italic ? "italic" : "not-italic"} ${
-      message.style.underline ? "underline" : "no-underline"
-    } text-3xl lg:text-6xl m-4`;
-
   const handleReset = () => {
     if (resetFunctionRef.current) {
       resetFunctionRef.current();

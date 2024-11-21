@@ -8,7 +8,12 @@ function Page() {
       <BackgroundOne />
       <div>
         <div className="flex flex-col items-center justify-center">
-          {/* <h1 className="text-4xl font-bold">About</h1> */}
+          {/* <p>
+            Hi, I am a full-stack developer who finds joy in exploring the vast
+            and ever-growing world of software. I specialise in building Next.js
+            applications with a variety of backend integrations; though am more
+            than capable with a variety of frameworks.
+          </p> */}
         </div>
       </div>
     </div>

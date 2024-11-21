@@ -50,17 +50,30 @@ const config: Config = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			},
-			heading: 'hsl(var(--heading))',
-			tokyo: {
-				'1': 'hsl(var(--tokyo-1))',
-				'2': 'hsl(var(--tokyo-2))',
-				'3': 'hsl(var(--tokyo-3))'
-			}
+  			heading: 'hsl(var(--heading))',
+  			tokyo: {
+  				'1': 'hsl(var(--tokyo-1))',
+  				'2': 'hsl(var(--tokyo-2))',
+  				'3': 'hsl(var(--tokyo-3))'
+  			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		animation: {
+  			ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite'
+  		},
+  		keyframes: {
+  			ripple: {
+  				'0%, 100%': {
+  					transform: 'translate(-50%, -50%) scale(1)'
+  				},
+  				'50%': {
+  					transform: 'translate(-50%, -50%) scale(0.9)'
+  				}
+  			}
   		}
   	}
   },

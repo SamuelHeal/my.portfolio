@@ -4,6 +4,10 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Navigation from "./components/Navigation/page";
 import Hero from "./components/Hero/page";
+import About from "./components/About/page";
+import AnimatedCursor from "./components/Cursor/AnimatedCursor";
+import CursorContext from "./components/Cursor/CursorProvider";
+
 export default function Home() {
   const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
@@ -17,13 +21,19 @@ export default function Home() {
   }
 
   return (
-    <div>
-      {/* <BackgroundOne />
+    <CursorContext>
+      <div>
+        {/* <BackgroundOne />
       <BackgroundTwo />
       <BackgroundThree />
       <BackgroundFour /> */}
-      <Navigation theme={theme} />
-      <Hero />
-    </div>
+        <AnimatedCursor />
+        <main>
+          <Navigation theme={theme} />
+          <Hero />
+          <About />
+        </main>
+      </div>
+    </CursorContext>
   );
 }

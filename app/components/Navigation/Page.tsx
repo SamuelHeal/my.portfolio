@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import "./navigation.scss";
+import "./navigation.css";
 
 import { MailOpen, FileUser, Github, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -19,7 +19,7 @@ function Page({ theme }: { theme: string }) {
     <>
       <div className="navigation border-b">
         <div className="navigation-logo">
-          <h1 className="scroll-m-20 text-4xl text-heading font-extrabold tracking-tight lg:text-5xl">
+          <h1 className="scroll-m-20 text-4xl text-heading font-extrabold tracking-tight lg:text-5xl text-tokyo-1">
             S.Heal
           </h1>
         </div>
@@ -27,26 +27,26 @@ function Page({ theme }: { theme: string }) {
           <p className="mx-2">+61 414 015 876</p>
           <div className="navigation-menu-icons">
             <Button
-              className="mx-2"
+              className="mx-2 hover:bg-tokyo-1"
               variant="outline"
               onClick={() => redirect("https://github.com/SamuelHeal")}
             >
               <Github />
             </Button>
             <Button
-              className="mx-2 hover:bg-tokyo-2"
+              className="mx-2 hover:bg-tokyo-1"
               variant="outline"
               onClick={() => redirect("mailto:samuel.j.heal@gmail.com")}
             >
               <MailOpen />
             </Button>
-            <Button className="mx-2">
+            <Button variant="outline" className="mx-2 hover:bg-tokyo-1">
               <FileUser />
             </Button>
             <Separator orientation="vertical" className="seperator" />
           </div>
           <Button
-            className="mx-2"
+            className="mx-2 hover:bg-tokyo-3"
             variant="secondary"
             onClick={() => {
               setTheme(theme === "light" ? "dark" : "light");

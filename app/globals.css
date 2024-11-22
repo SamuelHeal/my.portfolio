@@ -74,6 +74,31 @@
   font-style: normal;
 }
 
+@media (min-width: 768px) {
+  html,
+  body,
+  * {
+    cursor: none !important;
+  }
+
+  /* Ensure links and buttons also have no cursor */
+  a,
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    cursor: none !important;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 767px) {
+  html,
+  body,
+  * {
+    cursor: auto !important;
+  }
+}
+
 body {
   font-family: "Chillax-Variable", Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
@@ -107,6 +132,9 @@ body {
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --tokyo-1: 30 85% 65%;
+    --tokyo-2: 25 80% 55%;
+    --tokyo-3: 20 75% 45%;
   }
 
   .dark {
@@ -134,8 +162,21 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --tokyo-1: 30 85% 65%;
+    --tokyo-2: 25 80% 55%;
+    --tokyo-3: 20 75% 45%;
   }
 }
+
+/* @media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+
+  .pointer-events-none {
+    display: none;
+  }
+} */
 
 @layer base {
   * {

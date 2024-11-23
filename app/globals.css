@@ -81,7 +81,6 @@
     cursor: none !important;
   }
 
-  /* Ensure links and buttons also have no cursor */
   a,
   button,
   input[type="button"],
@@ -90,12 +89,11 @@
   }
 }
 
-/* For mobile devices */
 @media (max-width: 767px) {
   html,
   body,
   * {
-    cursor: auto !important;
+    cursor: none !important;
   }
 }
 
@@ -135,6 +133,7 @@ body {
     --tokyo-1: 30 85% 65%;
     --tokyo-2: 25 80% 55%;
     --tokyo-3: 20 75% 45%;
+    --cursor-color: 222 45% 44%;
   }
 
   .dark {
@@ -165,6 +164,7 @@ body {
     --tokyo-1: 30 85% 65%;
     --tokyo-2: 25 80% 55%;
     --tokyo-3: 20 75% 45%;
+    --cursor-color: 222 45% 44%;
   }
 }
 

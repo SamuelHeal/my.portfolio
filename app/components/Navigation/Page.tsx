@@ -19,7 +19,10 @@ function Page({ theme }: { theme: string }) {
     <>
       <div className="navigation border-b">
         <div className="navigation-logo">
-          <h1 className="scroll-m-20 text-4xl text-heading font-extrabold tracking-tight lg:text-5xl text-tokyo-1">
+          <h1
+            className="scroll-m-20 text-4xl text-heading font-extrabold tracking-tight lg:text-5xl text-tokyo-1"
+            data-hoverable="true"
+          >
             S.Heal
           </h1>
         </div>
@@ -30,6 +33,7 @@ function Page({ theme }: { theme: string }) {
               className="mx-2 hover:bg-tokyo-1"
               variant="outline"
               onClick={() => redirect("https://github.com/SamuelHeal")}
+              data-hoverable="true"
             >
               <Github />
             </Button>
@@ -37,10 +41,15 @@ function Page({ theme }: { theme: string }) {
               className="mx-2 hover:bg-tokyo-1"
               variant="outline"
               onClick={() => redirect("mailto:samuel.j.heal@gmail.com")}
+              data-hoverable="true"
             >
               <MailOpen />
             </Button>
-            <Button variant="outline" className="mx-2 hover:bg-tokyo-1">
+            <Button
+              variant="outline"
+              className="mx-2 hover:bg-tokyo-1"
+              data-hoverable="true"
+            >
               <FileUser />
             </Button>
             <Separator orientation="vertical" className="seperator" />
@@ -51,6 +60,7 @@ function Page({ theme }: { theme: string }) {
             onClick={() => {
               setTheme(theme === "light" ? "dark" : "light");
             }}
+            data-hoverable="true"
           >
             {theme === "light" ? (
               <Moon className="h-[1.2rem] w-[1.2rem] hover:bg-tokyo-1" />
@@ -67,6 +77,7 @@ function Page({ theme }: { theme: string }) {
               className="mx-2 my-4"
               variant="outline"
               onClick={() => redirect("https://github.com/SamuelHeal")}
+              data-hoverable="true"
             >
               <Github />
             </Button>
@@ -74,10 +85,11 @@ function Page({ theme }: { theme: string }) {
               className="mx-2 my-4 hover:bg-tokyo-2"
               variant="outline"
               onClick={() => redirect("mailto:samuel.j.heal@gmail.com")}
+              data-hoverable="true"
             >
               <MailOpen />
             </Button>
-            <Button className="mx-2 my-4">
+            <Button className="mx-2 my-4" data-hoverable="true">
               <FileUser />
             </Button>
           </div>

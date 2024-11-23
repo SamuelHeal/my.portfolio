@@ -36,7 +36,8 @@ function About() {
       <Button
         variant="outline"
         size="sm"
-        className="text-tokyo-1 text-2xl hover:bg-tokyo-1"
+        className="text-tokyo-1 text-2xl hover:bg-tokyo-1 hover:text-background"
+        data-hoverable="true"
       >
         get in touch
       </Button>

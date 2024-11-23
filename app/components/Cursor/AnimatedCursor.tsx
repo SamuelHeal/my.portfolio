@@ -41,18 +41,33 @@ export default function AnimatedCursor() {
   }, [setPosition, position.x, position.y]);
 
   return (
-    <div
-      className="fixed pointer-events-none z-50 mix-blend-difference"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: "translate(-50%, -50%)",
-      }}
-    >
+    <>
       <div
-        className={`rounded-full bg-white transition-all duration-200 ease-out
-          ${position.isHovering ? "w-24 h-24" : "w-8 h-8"}`}
-      />
-    </div>
+        className="fixed pointer-events-none z-50"
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <div
+          className="rounded-full bg-cursor-color transition-all duration-200 ease-out
+          w-4 h-4"
+        />
+      </div>
+      <div
+        className="fixed pointer-events-none z-50 mix-blend-hue"
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <div
+          className={`rounded-full bg-cursor-color transition-all duration-200 ease-out
+          ${position.isHovering ? "w-32 h-32" : "w-4 h-4"}`}
+        />
+      </div>
+    </>
   );
 }

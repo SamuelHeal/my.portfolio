@@ -27,7 +27,7 @@ export default function Home() {
       <BackgroundTwo />
       <BackgroundThree />
       <BackgroundFour /> */}
-        <AnimatedCursor />
+        {/* <AnimatedCursor /> */}
         <main>
           <Navigation theme={theme} />
           <Hero />

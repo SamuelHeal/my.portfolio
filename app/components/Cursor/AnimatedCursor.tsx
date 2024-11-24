@@ -51,7 +51,7 @@ export default function AnimatedCursor() {
         }}
       >
         <div
-          className="rounded-full bg-cursor-color transition-all duration-200 ease-out
+          className="rounded-full bg-cursor-color/90 transition-all duration-200 ease-out
           w-4 h-4"
         />
       </div>

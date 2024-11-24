@@ -1,0 +1,30 @@
+.svg-background {
+  position: relative;
+  top: -35vh;
+  left: 0;
+  width: 100vw;
+}
+
+.svg-background svg {
+  width: 80%;
+  height: fit-content;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.svg-background svg path {
+  fill: hsl(var(--tokyo-1));
+  stroke: hsl(var(--tokyo-1));
+}
+
+.svg-background-two svg path {
+  transform: translateY(-100%);
+}
+
+.svg-background-three svg path {
+  transform: translateY(-300%);
+}
+
+.svg-background-four svg path {
+  transform: translateY(-300%);
+}

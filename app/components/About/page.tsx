@@ -47,10 +47,10 @@ function About() {
     </div>
   );
   return (
-    <div className="relative w-screen">
+    <div className="relative w-screen top-[-35vh]">
       <BackgroundOne />
 
-      <div className="flex flex-col items-center h-[50vh] w-[60vw] mx-auto text-center">
+      <div className="flex flex-col items-top w-[60vw] mx-auto text-center">
         <Section>{text}</Section>
         <Section>{text2}</Section>
       </div>

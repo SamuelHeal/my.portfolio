@@ -7,7 +7,7 @@ import Hero from "./components/Hero/page";
 import About from "./components/About/page";
 import AnimatedCursor from "./components/Cursor/AnimatedCursor";
 import CursorContext from "./components/Cursor/CursorProvider";
-
+import Projects from "./components/Projects/page";
 export default function Home() {
   const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
@@ -23,15 +23,12 @@ export default function Home() {
   return (
     <CursorContext>
       <div>
-        {/* <BackgroundOne />
-      <BackgroundTwo />
-      <BackgroundThree />
-      <BackgroundFour /> */}
-        {/* <AnimatedCursor /> */}
+        <AnimatedCursor />
         <main>
           <Navigation theme={theme} />
           <Hero />
           <About />
+          <Projects />
         </main>
       </div>
     </CursorContext>

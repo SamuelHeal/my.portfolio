@@ -1,8 +1,9 @@
 .svg-background {
   position: relative;
-  top: -35vh;
+  // top: -35vh;
   left: 0;
   width: 100vw;
+  overflow: hidden;
 }
 
 .svg-background svg {
@@ -27,4 +28,11 @@
 
 .svg-background-four svg path {
   transform: translateY(-300%);
+}
+
+@media (max-width: 620px) {
+  .svg-background svg {
+    width: 200%;
+    transform: translateX(-50vw);
+  }
 }

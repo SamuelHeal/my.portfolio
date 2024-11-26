@@ -89,14 +89,6 @@
   }
 }
 
-@media (max-width: 767px) {
-  html,
-  body,
-  * {
-    cursor: none !important;
-  }
-}
-
 body {
   font-family: "Chillax-Variable", Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;

@@ -88,7 +88,7 @@ export const BackgroundOne = () => {
   }, [scrollY]);
 
   return (
-    <div className="svg-background svg-background-four h-[250px]">
+    <div className="svg-background svg-background-four h-[100%]">
       <svg
         width="1054"
         height="500"

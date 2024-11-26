@@ -7,8 +7,8 @@
   display: flex;
   gap: 4vmin;
   position: absolute;
-  left: 0;
-  transform: translate(0%, 0);
+  left: 50%;
+  transform: translate(85%, 0);
   user-select: none;
   width: max-content;
   padding-left: 5vw;
@@ -16,7 +16,7 @@
 
 #image-track > .image {
   width: 40vmin;
-  height: 56vmin;
+  height: 50vmin;
   object-fit: cover;
   object-position: 75% center;
   border-radius: 10px;

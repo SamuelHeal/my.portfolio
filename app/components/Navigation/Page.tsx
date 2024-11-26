@@ -23,7 +23,7 @@ function Page({ theme }: { theme: string }) {
             className="scroll-m-20 text-4xl text-heading font-extrabold tracking-tight lg:text-5xl text-tokyo-1"
             data-hoverable="true"
           >
-            S.Heal
+            SH
           </h1>
         </div>
         <div className="navigation-menu">

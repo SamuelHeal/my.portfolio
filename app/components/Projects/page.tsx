@@ -24,20 +24,17 @@ function Projects() {
       const rect = container.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      const startPoint = viewportHeight * 0.5;
-      const endPoint = viewportHeight * 0.06;
+      const startPoint = viewportHeight * 0.8;
+      const endPoint = viewportHeight * 0.08;
       const totalDistance = startPoint - endPoint;
 
       let progress = (startPoint - rect.top) / totalDistance;
-      progress = Math.max(0, Math.min(1, progress)); // Clamp between 0 and 1
+      progress = Math.max(0, Math.min(1, progress));
 
-      // Convert progress to percentage for track movement (-100% to 0%)
-      const percentage = -(progress * 100);
+      const percentage = 85 - progress * 225;
 
-      // Apply transforms
       track.style.transform = `translate(${percentage}%, 0)`;
 
-      // Update images
       const images = track.getElementsByClassName("image");
       for (const image of images) {
         (image as HTMLElement).style.objectPosition = `${
@@ -45,12 +42,11 @@ function Projects() {
         }% center`;
       }
 
-      // Update end state for title animation when almost complete
       setIsAtEnd(progress >= 0.95);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial position check
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);

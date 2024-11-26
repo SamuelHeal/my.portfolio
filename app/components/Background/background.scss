@@ -7,7 +7,7 @@
 }
 
 .svg-background svg {
-  width: 80%;
+  width: 100%;
   height: fit-content;
   object-fit: cover;
   margin: 0 auto;
@@ -20,6 +20,7 @@
 
 .svg-background-two svg path {
   transform: translateY(-100%);
+  transform: translateX(-23%);
 }
 
 .svg-background-three svg path {
@@ -34,5 +35,10 @@
   .svg-background svg {
     width: 200%;
     transform: translateX(-50vw);
+  }
+
+  .svg-background-two svg {
+    width: 200%;
+    // transform: translateX(-5vw);
   }
 }

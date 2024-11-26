@@ -54,7 +54,7 @@ export const BackgroundOne = () => {
       const progress = Math.min(
         window.innerWidth < 620
           ? scrollPosition - windowHeight * 0.1
-          : Math.min(scrollProgress * 2, 1),
+          : Math.min(scrollProgress * 5, 1),
         1
       );
 
@@ -155,6 +155,128 @@ export const BackgroundOne = () => {
           ref={pathRef5}
           style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
           data-hoverable="true"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const BackgroundTwo = () => {
+  const pathRef = useRef(null);
+  const pathRef2 = useRef(null);
+  const pathRef3 = useRef(null);
+  const { scrollY } = useScroll();
+  const { scrollYProgress } = useScroll();
+  const animatedRef = useRef(false);
+
+  useEffect(() => {
+    const path = pathRef.current;
+    const path2 = pathRef2.current;
+    const path3 = pathRef3.current;
+
+    if (!path || !path2 || !path3) return;
+
+    const length = (path as SVGPathElement).getTotalLength();
+    (path as SVGPathElement).style.strokeDasharray = length.toString();
+    (path as SVGPathElement).style.strokeDashoffset = length.toString();
+
+    const length2 = (path2 as SVGPathElement).getTotalLength();
+    (path2 as SVGPathElement).style.strokeDasharray = length2.toString();
+    (path2 as SVGPathElement).style.strokeDashoffset = length2.toString();
+
+    const length3 = (path3 as SVGPathElement).getTotalLength();
+    (path3 as SVGPathElement).style.strokeDasharray = length3.toString();
+    (path3 as SVGPathElement).style.strokeDashoffset = length3.toString();
+
+    const handleScroll = () => {
+      if (animatedRef.current) return;
+
+      const scrollPosition = scrollY.get();
+      const windowHeight = window.innerHeight;
+      if (window.innerWidth < 620) {
+        if (scrollPosition < windowHeight * 1.4) return;
+      } else {
+        if (scrollPosition < windowHeight * 1.2) return;
+      }
+
+      const progress = Math.min(
+        (window.innerWidth < 620
+          ? scrollPosition - windowHeight * 1.4
+          : scrollPosition - windowHeight * 1.2) / 200,
+        1
+      );
+      const drawLength = length * progress;
+      (path as SVGPathElement).style.strokeDashoffset = (
+        length - drawLength
+      ).toString();
+
+      const drawLength2 = length2 * progress;
+      (path2 as SVGPathElement).style.strokeDashoffset = (
+        length2 - drawLength2
+      ).toString();
+
+      const drawLength3 = length3 * progress;
+      (path3 as SVGPathElement).style.strokeDashoffset = (
+        length3 - drawLength3
+      ).toString();
+
+      if (progress === 1) {
+        animatedRef.current = true;
+        [path, path2, path3].forEach((p) => {
+          (p as SVGPathElement).style.transition = "fill-opacity 0.5s ease";
+          (p as SVGPathElement).style.fillOpacity = "1";
+        });
+      }
+    };
+
+    const unsubscribe = scrollY.on("change", handleScroll);
+
+    return () => {
+      unsubscribe();
+    };
+  }, [scrollY]);
+
+  return (
+    <div className="svg-background svg-background-two">
+      <svg
+        width="1054"
+        height="300"
+        viewBox="0 0 1054 300"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M760.18 210.999C758.726 217.392 747.359 217.134 746.839 211.997C745.078 196.187 728.762 176.239 707.589 166.119C707.484 166.067 707.399 166 707.34 165.923C707.281 165.845 707.251 165.759 707.251 165.673C707.251 165.586 707.281 165.5 707.34 165.423C707.399 165.345 707.484 165.278 707.589 165.227C707.92 165.042 708.308 164.906 708.724 164.829C709.141 164.752 709.577 164.736 710.004 164.781C723.252 166.199 747.786 176.748 748.587 185.041C737.487 70.7227 608.703 41.1087 458.573 43.8195C381.273 43.7393 304.867 56.1163 227.635 56.6959C151.856 56.1966 67.8455 42.4285 18.3225 1.50756C18.1799 1.39673 18.0803 1.26418 18.0324 1.12157C17.9844 0.978959 17.9897 0.830631 18.0477 0.689699C18.1057 0.548767 18.2146 0.419524 18.3649 0.313343C18.5152 0.207162 18.7022 0.127294 18.9095 0.0807803C19.2692 -0.0101968 19.6621 -0.0247486 20.0346 0.0390899C20.4071 0.102928 20.741 0.242067 20.9908 0.437489C71.3943 39.6374 152.976 51.7647 227.474 50.873C304.854 48.8845 380.206 34.8221 457.959 33.7342C616.227 26.8323 758.673 59.594 756.325 183.543C756.405 179.922 778.365 164.317 795.895 163.809C796.397 163.794 796.889 163.905 797.276 164.119C797.663 164.333 797.917 164.636 797.99 164.968V165.013C798.028 165.203 797.956 165.395 797.786 165.55C797.617 165.704 797.365 165.809 797.083 165.842C777.751 168.49 763.076 198.131 760.18 210.999Z"
+          fill="#FFCA75"
+          stroke="#FFCA75"
+          strokeWidth="2"
+          fillRule="evenodd"
+          strokeDasharray="2000"
+          strokeDashoffset="2000"
+          ref={pathRef}
+          style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+        />
+        <path
+          d="M431.463 61.101C494.514 59.4781 587.944 64.9176 642.617 84.9634C642.789 85.0039 642.978 85.0043 643.151 84.9643C643.324 84.9244 643.472 84.8465 643.571 84.7433C643.67 84.6401 643.714 84.5177 643.695 84.3958C643.677 84.2739 643.598 84.1597 643.47 84.0717C590.999 59.594 494.781 53.8425 431.343 60.0667C431.174 60.1047 431.029 60.1792 430.931 60.2786C430.833 60.3779 430.787 60.4964 430.801 60.6151C430.814 60.7339 430.887 60.8461 431.007 60.9342C431.127 61.0222 431.288 61.0809 431.463 61.101Z"
+          fill="#FFCA75"
+          stroke="#FFCA75"
+          strokeWidth="2"
+          fillRule="evenodd"
+          strokeDasharray="2000"
+          strokeDashoffset="2000"
+          ref={pathRef2}
+          style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+        />
+        <path
+          d="M413.532 63.91C413.764 63.8175 413.949 63.6802 414.061 63.5162C414.174 63.3522 414.209 63.1693 414.163 62.9915C414.117 62.8137 413.991 62.6495 413.802 62.5206C413.613 62.3916 413.37 62.304 413.105 62.2693C412.332 62.2693 411.545 62.2693 410.771 62.3228C408.208 62.4303 405.656 62.6327 403.126 62.9291C400.595 63.2242 398.091 63.6173 395.628 64.1062C394.868 64.2578 394.121 64.4183 393.374 64.5877C393.137 64.6789 392.948 64.8165 392.832 64.9818C392.716 65.1471 392.679 65.3322 392.726 65.5121C392.772 65.692 392.9 65.8581 393.092 65.9878C393.285 66.1175 393.532 66.2046 393.801 66.2374C394.601 66.2374 395.388 66.2374 396.175 66.1749C401.307 65.9625 406.387 65.3643 411.318 64.3915C412.118 64.2488 412.852 64.0794 413.532 63.91Z"
+          fill="#FFCA75"
+          stroke="#FFCA75"
+          strokeWidth="2"
+          fillRule="evenodd"
+          strokeDasharray="2000"
+          strokeDashoffset="2000"
+          ref={pathRef3}
+          style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
         />
       </svg>
     </div>

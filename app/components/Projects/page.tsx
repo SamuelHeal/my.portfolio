@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./projects.css";
 import { BackgroundTwo } from "../Background/page";
+import ProjectSection from "./components/ProjectSection";
 
 interface TrackElement extends HTMLDivElement {
   dataset: {
@@ -105,6 +106,12 @@ function Projects() {
           </h2>
         </div>
       </div>
+      <ProjectSection
+        title="Project 1"
+        date="2024"
+        company="Company 1"
+        image="https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80"
+      />
     </div>
   );
 }

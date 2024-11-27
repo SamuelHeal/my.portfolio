@@ -1,0 +1,30 @@
+.project-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* margin-top: 1px; */
+}
+
+.project-section > div {
+  margin: 5vw;
+}
+
+.project-image {
+  width: 400px;
+  height: 400px;
+  transform: translate(-50%, -50%) rotate(calc(40deg, 0deg) * -1);
+  border-radius: 74% 26% 50% 50% / 29% 70% 30% 71%;
+}
+
+.project-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-description {
+  margin-bottom: 20px;
+}

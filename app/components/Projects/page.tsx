@@ -54,6 +54,30 @@ function Projects() {
     };
   }, []);
 
+  const projects = [
+    {
+      title: "Project 1",
+      date: "2024",
+      company: "Company 1",
+      image:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+    },
+    {
+      title: "Project 2",
+      date: "2024",
+      company: "Company 2",
+      image:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+    },
+    {
+      title: "Project 3",
+      date: "2024",
+      company: "Company 3",
+      image:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+    },
+  ];
+
   return (
     <div className="projects-container relative">
       <BackgroundTwo />
@@ -106,12 +130,9 @@ function Projects() {
           </h2>
         </div>
       </div>
-      <ProjectSection
-        title="Project 1"
-        date="2024"
-        company="Company 1"
-        image="https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80"
-      />
+      {projects.map((project, index) => (
+        <ProjectSection key={index} {...project} number={index} />
+      ))}
     </div>
   );
 }

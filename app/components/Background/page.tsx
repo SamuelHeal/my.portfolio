@@ -54,7 +54,7 @@ export const BackgroundOne = () => {
       const progress = Math.min(
         window.innerWidth < 620
           ? scrollPosition - windowHeight * 0.1
-          : Math.min(scrollProgress * 5, 1),
+          : Math.min(scrollProgress * 8, 1),
         1
       );
 

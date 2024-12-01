@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./projects.css";
-import { BackgroundTwo } from "../Background/page";
+import { BackgroundThree, BackgroundTwo } from "../Background/page";
 import ProjectSection from "./components/ProjectSection";
 
 interface TrackElement extends HTMLDivElement {
@@ -25,8 +25,8 @@ function Projects() {
       const rect = container.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      const startPoint = viewportHeight * 0.8;
-      const endPoint = viewportHeight * 0.08;
+      const startPoint = viewportHeight * 1.2;
+      const endPoint = -viewportHeight * 0.5;
       const totalDistance = startPoint - endPoint;
 
       let progress = (startPoint - rect.top) / totalDistance;
@@ -43,7 +43,7 @@ function Projects() {
         }% center`;
       }
 
-      setIsAtEnd(progress >= 0.95);
+      setIsAtEnd(progress >= 0.65);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -59,21 +59,39 @@ function Projects() {
       title: "Project 1",
       date: "2024",
       company: "Company 1",
+      description: "Description of project 1",
+      challenges: "Challenges faced in project 1",
       image:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+      descriptionImage:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+      challengesImage:
         "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
     },
     {
       title: "Project 2",
       date: "2024",
       company: "Company 2",
+      description: "Description of project 2",
+      challenges: "Challenges faced in project 2",
       image:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+      descriptionImage:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+      challengesImage:
         "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
     },
     {
       title: "Project 3",
       date: "2024",
       company: "Company 3",
+      description: "Description of project 3",
+      challenges: "Challenges faced in project 3",
       image:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+      descriptionImage:
+        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+      challengesImage:
         "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
     },
   ];
@@ -120,19 +138,20 @@ function Projects() {
             draggable={false}
           />
         </div>
-        <div className="w-screen" data-hoverable="true">
-          <h2
-            className={`projects-title ${
-              isAtEnd ? "slide-in" : "slide-out"
-            } scroll-m-20 border-b pb-2 text-5xl font-semibold tracking-tight first:mt-0 text-tokyo-1`}
-          >
-            Projects
-          </h2>
-        </div>
       </div>
-      {projects.map((project, index) => (
-        <ProjectSection key={index} {...project} number={index} />
-      ))}
+      <div className="w-full" data-hoverable="true">
+        <h2
+          className={`projects-title ${
+            isAtEnd ? "slide-in" : "slide-out"
+          } scroll-m-20 text-5xl font-semibold tracking-tight first:mt-0 text-tokyo-1 mb-20 text-center`}
+        >
+          Projects
+        </h2>
+        {projects.map((project, index) => (
+          <ProjectSection key={index} {...project} number={index} />
+        ))}
+      </div>
+      {/* <BackgroundThree /> */}
     </div>
   );
 }

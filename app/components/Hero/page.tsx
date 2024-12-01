@@ -14,28 +14,25 @@ function Hero() {
     element.innerText = "";
 
     text.forEach((value, index) => {
-      const outer = document.createElement("span");
+      if (value === " ") {
+        element.appendChild(document.createTextNode(" "));
+        return;
+      }
 
+      const outer = document.createElement("span");
       outer.className = "outer";
 
       const inner = document.createElement("span");
-
       inner.className = "inner";
-
       inner.style.animationDelay = `${rand(-5000, 0)}ms`;
 
       const letter = document.createElement("span");
-
       letter.className = "letter";
-
       letter.innerText = value;
-
       letter.style.animationDelay = `${index * 1000}ms`;
 
       inner.appendChild(letter);
-
       outer.appendChild(inner);
-
       element.appendChild(outer);
     });
 
@@ -78,7 +75,7 @@ function Hero() {
             id="fancy-text"
             className="scroll-m-20 text-7xl font-semibold text-tokyo-1 tracking-tight lg:text-9xl word fancy"
           >
-            Samuel.Heal
+            Samuel Heal
           </h1>
         </div>
       </div>

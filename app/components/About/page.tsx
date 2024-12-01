@@ -35,7 +35,8 @@ function About() {
 
   const text2 = (
     <div className="scroll-m-20 text-2xl font-normal tracking-tight">
-      Whether you want to hire me or just want to chat about an idea, please{" "}
+      Whether you want to discuss working together, or just want to chat about
+      idea's and tech, please{" "}
       <Button
         variant="outline"
         size="sm"

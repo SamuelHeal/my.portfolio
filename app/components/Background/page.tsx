@@ -255,6 +255,7 @@ export const BackgroundTwo = () => {
           strokeDashoffset="2000"
           ref={pathRef}
           style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+          data-hoverable="true"
         />
         <path
           d="M431.463 61.101C494.514 59.4781 587.944 64.9176 642.617 84.9634C642.789 85.0039 642.978 85.0043 643.151 84.9643C643.324 84.9244 643.472 84.8465 643.571 84.7433C643.67 84.6401 643.714 84.5177 643.695 84.3958C643.677 84.2739 643.598 84.1597 643.47 84.0717C590.999 59.594 494.781 53.8425 431.343 60.0667C431.174 60.1047 431.029 60.1792 430.931 60.2786C430.833 60.3779 430.787 60.4964 430.801 60.6151C430.814 60.7339 430.887 60.8461 431.007 60.9342C431.127 61.0222 431.288 61.0809 431.463 61.101Z"
@@ -266,6 +267,7 @@ export const BackgroundTwo = () => {
           strokeDashoffset="2000"
           ref={pathRef2}
           style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+          data-hoverable="true"
         />
         <path
           d="M413.532 63.91C413.764 63.8175 413.949 63.6802 414.061 63.5162C414.174 63.3522 414.209 63.1693 414.163 62.9915C414.117 62.8137 413.991 62.6495 413.802 62.5206C413.613 62.3916 413.37 62.304 413.105 62.2693C412.332 62.2693 411.545 62.2693 410.771 62.3228C408.208 62.4303 405.656 62.6327 403.126 62.9291C400.595 63.2242 398.091 63.6173 395.628 64.1062C394.868 64.2578 394.121 64.4183 393.374 64.5877C393.137 64.6789 392.948 64.8165 392.832 64.9818C392.716 65.1471 392.679 65.3322 392.726 65.5121C392.772 65.692 392.9 65.8581 393.092 65.9878C393.285 66.1175 393.532 66.2046 393.801 66.2374C394.601 66.2374 395.388 66.2374 396.175 66.1749C401.307 65.9625 406.387 65.3643 411.318 64.3915C412.118 64.2488 412.852 64.0794 413.532 63.91Z"
@@ -277,6 +279,131 @@ export const BackgroundTwo = () => {
           strokeDashoffset="2000"
           ref={pathRef3}
           style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+          data-hoverable="true"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const BackgroundThree = () => {
+  const pathRef = useRef(null);
+  const pathRef2 = useRef(null);
+  const pathRef3 = useRef(null);
+  const { scrollY } = useScroll();
+  const animatedRef = useRef(false);
+
+  useEffect(() => {
+    const path = pathRef.current;
+    const path2 = pathRef2.current;
+    const path3 = pathRef3.current;
+
+    if (!path || !path2 || !path3) return;
+
+    const length = (path as SVGPathElement).getTotalLength();
+    (path as SVGPathElement).style.strokeDasharray = length.toString();
+    (path as SVGPathElement).style.strokeDashoffset = length.toString();
+
+    const length2 = (path2 as SVGPathElement).getTotalLength();
+    (path2 as SVGPathElement).style.strokeDasharray = length2.toString();
+    (path2 as SVGPathElement).style.strokeDashoffset = length2.toString();
+
+    const length3 = (path3 as SVGPathElement).getTotalLength();
+    (path3 as SVGPathElement).style.strokeDasharray = length3.toString();
+    (path3 as SVGPathElement).style.strokeDashoffset = length3.toString();
+
+    const handleScroll = () => {
+      if (animatedRef.current) return;
+
+      const scrollPosition = scrollY.get();
+      const windowHeight = window.innerHeight;
+      if (window.innerWidth < 620) {
+        if (scrollPosition < windowHeight * 4.7) return;
+      } else {
+        if (scrollPosition < windowHeight * 4.7) return;
+      }
+
+      const progress = Math.min(
+        (window.innerWidth < 620
+          ? scrollPosition - windowHeight * 4.7
+          : scrollPosition - windowHeight * 4.7) / 300,
+        1
+      );
+      const drawLength = length * progress;
+      (path as SVGPathElement).style.strokeDashoffset = (
+        length - drawLength
+      ).toString();
+
+      const drawLength2 = length2 * progress;
+      (path2 as SVGPathElement).style.strokeDashoffset = (
+        length2 - drawLength2
+      ).toString();
+
+      const drawLength3 = length3 * progress;
+      (path3 as SVGPathElement).style.strokeDashoffset = (
+        length3 - drawLength3
+      ).toString();
+
+      if (progress === 1) {
+        animatedRef.current = true;
+        [path, path2, path3].forEach((p) => {
+          (p as SVGPathElement).style.transition = "fill-opacity 0.5s ease";
+          (p as SVGPathElement).style.fillOpacity = "1";
+        });
+      }
+    };
+
+    const unsubscribe = scrollY.on("change", handleScroll);
+
+    return () => {
+      unsubscribe();
+    };
+  }, [scrollY]);
+
+  return (
+    <div className="svg-background svg-background-three">
+      <svg
+        width="1054"
+        height="400"
+        viewBox="0 0 1054 400"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M638.836 568.301C657.733 591.054 662.799 621.365 667.215 649.086C667.215 649.086 667.384 650.731 668.411 650.706C669.437 650.681 669.415 649.033 669.415 649.033C671.173 627.03 670.485 604.774 664.256 583.213C802.959 674.043 1020.77 605.372 1112.3 485.879C1112.3 485.879 1113.8 484.309 1112.49 483.335C1111.18 482.361 1109.23 484.074 1109.23 484.074C1054.71 539.805 958.014 584.147 896.302 593.792C807.928 607.581 751.358 597.845 676.959 576.046C700.866 583.064 731.95 569.136 745.275 548.352C745.275 548.352 746.038 547.262 745.568 546.812C745.099 546.362 743.735 546.856 743.735 546.856C724.604 553.702 704.176 554.726 683.944 555.531C668.122 556.92 652.187 556.755 636.422 555.039C635.561 554.954 634.689 555.102 633.919 555.465C633.148 555.827 632.515 556.387 632.098 557.073C631.682 557.759 631.502 558.54 631.581 559.316C631.66 560.092 631.995 560.829 632.542 561.431L638.836 568.301Z"
+          fill="#FFCA75"
+          stroke="#FFCA75"
+          strokeWidth="2"
+          fillRule="evenodd"
+          strokeDasharray="2000"
+          strokeDashoffset="2000"
+          ref={pathRef}
+          style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+          data-hoverable="true"
+        />
+        <path
+          d="M1027.17 591.714C1023.34 597.327 1017.3 601.442 1010.26 603.237C1009.94 603.312 1009.61 603.292 1009.3 603.179C1009 603.067 1008.74 602.869 1008.57 602.615C1008.41 602.36 1008.34 602.064 1008.37 601.769C1008.41 601.475 1008.55 601.198 1008.78 600.981C1013.57 596.585 1019.04 592.826 1025.01 589.821C1025.3 589.612 1025.67 589.505 1026.04 589.52C1026.41 589.536 1026.76 589.673 1027.03 589.906C1027.29 590.139 1027.45 590.451 1027.48 590.784C1027.51 591.117 1027.4 591.448 1027.17 591.714Z"
+          fill="#FFCA75"
+          stroke="#FFCA75"
+          strokeWidth="2"
+          fillRule="evenodd"
+          strokeDasharray="2000"
+          strokeDashoffset="2000"
+          ref={pathRef2}
+          style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+          data-hoverable="true"
+        />
+        <path
+          d="M997.655 609.083C957.234 637.318 903.699 653.557 852.812 647.458C852.54 647.451 852.282 647.348 852.095 647.17C851.909 646.992 851.809 646.754 851.817 646.509C851.826 646.264 851.942 646.032 852.141 645.863C852.34 645.694 852.605 645.603 852.878 645.61C903.302 642.504 951.369 627.717 996.571 607.494C996.806 607.363 997.089 607.322 997.357 607.379C997.625 607.436 997.856 607.586 998 607.797C998.144 608.008 998.188 608.262 998.123 608.503C998.059 608.744 997.89 608.953 997.655 609.083Z"
+          fill="#FFCA75"
+          stroke="#FFCA75"
+          strokeWidth="2"
+          fillRule="evenodd"
+          strokeDasharray="2000"
+          strokeDashoffset="2000"
+          ref={pathRef3}
+          style={{ fillOpacity: 0, transition: "stroke-dashoffset 0.1s ease" }}
+          data-hoverable="true"
         />
       </svg>
     </div>

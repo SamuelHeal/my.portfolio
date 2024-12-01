@@ -9,12 +9,20 @@ function ProjectSection({
   company,
   image,
   number,
+  description,
+  challenges,
+  descriptionImage,
+  challengesImage,
 }: {
   title: string;
   date: string;
   company: string;
   image: string;
   number: number;
+  description: string;
+  challenges: string;
+  descriptionImage: string;
+  challengesImage: string;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -41,7 +49,7 @@ function ProjectSection({
           className="project-image-section"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ margin: "-200px" }}
+          viewport={{ margin: "-100px" }}
           transition={{
             duration: 0.7,
             delay: 0.2,
@@ -58,7 +66,7 @@ function ProjectSection({
           className="project-text"
           initial={{ x: number % 2 === 0 ? 100 : -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ margin: "-200px" }}
+          viewport={{ margin: "-100px" }}
           transition={{
             duration: 0.7,
             delay: 0.4,
@@ -92,7 +100,7 @@ function ProjectSection({
             className="fixed inset-0 bg-black/30 backdrop-blur-xl z-40 transition-all duration-700"
             onClick={() => setIsExpanded(false)}
           />
-          <div className="fixed inset-0 z-40 overflow-hidden">
+          <div className="fixed inset-0 z-40 overflow-y-auto mx-auto">
             {/* Close button */}
             <button
               onClick={() => setIsExpanded(false)}
@@ -101,56 +109,127 @@ function ProjectSection({
               ✕
             </button>
 
-            {/* Content container with centered column layout */}
-            <div className="fixed inset-0 flex flex-col items-center justify-center gap-12 p-20">
-              <motion.div
-                className="text-4xl font-bold text-tokyo-1 text-center"
-                initial={{ y: -1000 }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 0.7,
-                  type: "spring",
-                  damping: 20,
-                }}
+            {/* Content container modified for scrolling */}
+            <div className="min-h-full w-[80vw] mx-auto flex flex-col items-center gap-12 py-32 px-32">
+              <div
+                className={`flex ${
+                  number % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                } justify-between items-center w-full my-12`}
               >
-                <h2>{title}</h2>
-              </motion.div>
+                <div className="flex flex-col gap-4 justify-center items-center">
+                  <motion.div
+                    className="text-4xl font-bold text-tokyo-1 text-left"
+                    initial={{ x: number % 2 === 0 ? -100 : 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ margin: "-200px" }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.4,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <h2>{title}</h2>
+                  </motion.div>
+                  <motion.div
+                    className="text-xl text-tokyo-1 text-center"
+                    initial={{ x: number % 2 === 0 ? -100 : 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ margin: "-200px" }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.4,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <p>
+                      {company} - {date}
+                    </p>
+                  </motion.div>
+                </div>
 
-              <motion.div
-                initial={{ y: 1000 }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.1,
-                  type: "spring",
-                  damping: 20,
-                }}
-              >
-                <div className="relative w-[400px] h-[300px] overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 blur-2xl opacity-50 animate-blob" />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-200px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.2,
+                  }}
+                >
                   <img
                     src={image}
                     alt={title}
-                    className="relative w-full h-full object-cover rounded-2xl"
+                    className="relative w-[600px] h-[400px] object-cover rounded-2xl"
                   />
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
 
-              <motion.div
-                className="text-xl text-tokyo-1 text-center"
-                initial={{ y: 1000 }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.2,
-                  type: "spring",
-                  damping: 20,
-                }}
+              <div
+                className={`flex ${
+                  number % 2 === 0 ? "flex-row-reverse" : "flex-row"
+                } justify-between items-center w-full my-12`}
               >
-                <p>
-                  {company} - {date}
-                </p>
-              </motion.div>
+                <motion.div
+                  initial={{ x: number % 2 === 0 ? 100 : -100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ margin: "-200px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.4,
+                    ease: "easeOut",
+                  }}
+                >
+                  <p>{description}</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-200px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.2,
+                  }}
+                >
+                  <img
+                    src={descriptionImage}
+                    alt={title}
+                    className="relative w-[400px] h-[300px] object-cover rounded-2xl"
+                  />
+                </motion.div>
+              </div>
+              <div
+                className={`flex ${
+                  number % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                } justify-between items-center w-full my-12`}
+              >
+                <motion.div
+                  initial={{ x: number % 2 === 0 ? -100 : 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ margin: "-200px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.4,
+                    ease: "easeOut",
+                  }}
+                >
+                  <p>{challenges}</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-200px" }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.2,
+                  }}
+                >
+                  <img
+                    src={challengesImage}
+                    alt={title}
+                    className="relative w-[400px] h-[300px] object-cover rounded-2xl"
+                  />
+                </motion.div>
+              </div>
             </div>
           </div>
         </>

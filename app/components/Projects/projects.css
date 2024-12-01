@@ -34,16 +34,16 @@
 
 .projects-title {
   position: relative;
-  top: 50%;
-  left: 100vw;
-  transform: translateX(100vw);
+  top: 50px;
+  right: 100%;
+  transform: translateX(-100%);
   transition: transform 0.5s ease-out;
 }
 
 .projects-title.slide-in {
-  transform: translateX(-56vw);
+  transform: translateX(100%);
 }
 
 .projects-title.slide-out {
-  transform: translateX(56vw);
+  transform: translateX(-100%);
 }

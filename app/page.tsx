@@ -8,6 +8,7 @@ import About from "./components/About/page";
 import AnimatedCursor from "./components/Cursor/AnimatedCursor";
 import CursorContext from "./components/Cursor/CursorProvider";
 import Projects from "./components/Projects/page";
+import Contact from "./components/Contact/page";
 export default function Home() {
   const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +30,7 @@ export default function Home() {
           <Hero />
           <About />
           <Projects />
+          <Contact />
         </main>
       </div>
     </CursorContext>

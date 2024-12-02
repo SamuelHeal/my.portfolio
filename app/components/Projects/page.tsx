@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./projects.css";
-import { BackgroundThree, BackgroundTwo } from "../Background/page";
+import { BackgroundTwo } from "../Background/page";
 import ProjectSection from "./components/ProjectSection";
 
 interface TrackElement extends HTMLDivElement {
@@ -60,7 +60,7 @@ function Projects() {
       date: "2024",
       company: "Company 1",
       description: "Description of project 1",
-      challenges: "Challenges faced in project 1",
+      tech: "Challenges faced in project 1",
       image:
         "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
       descriptionImage:
@@ -73,7 +73,7 @@ function Projects() {
       date: "2024",
       company: "Company 2",
       description: "Description of project 2",
-      challenges: "Challenges faced in project 2",
+      tech: "Challenges faced in project 2",
       image:
         "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
       descriptionImage:
@@ -82,17 +82,15 @@ function Projects() {
         "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
     },
     {
-      title: "Project 3",
-      date: "2024",
-      company: "Company 3",
-      description: "Description of project 3",
-      challenges: "Challenges faced in project 3",
-      image:
-        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
-      descriptionImage:
-        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
-      challengesImage:
-        "https://images.unsplash.com/photo-1496753480864-3e588e0269b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2134&q=80",
+      title: "Centrifuge Capital",
+      date: "2021",
+      company: "UX Designer & Full Stack Developer",
+      description:
+        "In 2021 I was contracted by Centrifuge Capital to work as the Designer and Full Stack Developer for their website. Centrifuge Capital offers a number of AI-driven equity investment funds and needed a website that would be primarily used to provide access to their investor overview to potential investors. In addition to this, they wanted their performance data to be clearly displayed and the disclaimer to be displayed in a number of different places to ensure visitors did not miss it.",
+      tech: "This site was built using a MERN framework and is hosted on Heroku. It has been complemented with emailjs to send contact and confirmation emails.",
+      image: "/c-hero.png",
+      descriptionImage: "/c-slides.png",
+      challengesImage: "/c-login.png",
     },
   ];
 
@@ -107,16 +105,8 @@ function Projects() {
           data-prev-percentage="0"
           data-hoverable="true"
         >
-          <img
-            className="image"
-            src="https://images.unsplash.com/photo-1524781289445-ddf8f5695861?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            draggable={false}
-          />
-          <img
-            className="image"
-            src="https://images.unsplash.com/photo-1610194352361-4c81a6a8967e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80"
-            draggable={false}
-          />
+          <img className="image" src="/c-hero.png" draggable={false} />
+          <img className="image" src="/c-about.png" draggable={false} />
           <img
             className="image"
             src="https://images.unsplash.com/photo-1618202133208-2907bebba9e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
@@ -151,7 +141,6 @@ function Projects() {
           <ProjectSection key={index} {...project} number={index} />
         ))}
       </div>
-      {/* <BackgroundThree /> */}
     </div>
   );
 }

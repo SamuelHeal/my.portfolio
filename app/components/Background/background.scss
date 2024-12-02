@@ -19,17 +19,15 @@
 }
 
 .svg-background-two svg path {
-  transform: translateY(-100%);
-  transform: translateX(-23%);
+  transform: translateX(-35%) translateY(100%) rotate(-20deg);
 }
 
 .svg-background-three svg {
-  // right: 50vw;
   transform: scaleY(-1);
 }
 
 .svg-background-three svg path {
-  transform: translateX(25%) translateY(-170%) rotate(25deg);
+  transform: translateX(25%) translateY(-170%) rotate(20deg);
 }
 
 .svg-background-four svg path {

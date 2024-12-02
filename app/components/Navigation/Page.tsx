@@ -19,7 +19,7 @@ function Page({ theme }: { theme: string }) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const redirect = (location: string) => {
-    window.location.href = location;
+    window.open(location, "_blank", "noopener,noreferrer");
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {

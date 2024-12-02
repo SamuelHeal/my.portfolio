@@ -10,7 +10,7 @@ function ProjectSection({
   image,
   number,
   description,
-  challenges,
+  tech,
   descriptionImage,
   challengesImage,
 }: {
@@ -20,7 +20,7 @@ function ProjectSection({
   image: string;
   number: number;
   description: string;
-  challenges: string;
+  tech: string;
   descriptionImage: string;
   challengesImage: string;
 }) {
@@ -123,15 +123,15 @@ function ProjectSection({
             </button>
 
             {/* Content container modified for scrolling */}
-            <div className="min-h-full w-[80vw] mx-auto flex flex-col items-center gap-12 py-32 px-32">
+            <div className="min-h-full w-[100%] mx-auto flex flex-col items-center gap-12 py-32 px-32">
               <div
-                className={`flex ${
+                className={`expanded-container flex ${
                   number % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 } justify-between items-center w-full my-12`}
               >
-                <div className="flex flex-col gap-4 justify-center items-center">
+                <div className="flex flex-col gap-4 justify-center items-center mx-4 w-1/2">
                   <motion.div
-                    className="text-4xl font-bold text-tokyo-1 text-left"
+                    className="text-4xl font-bold text-tokyo-1 text-center"
                     initial={{ x: number % 2 === 0 ? -100 : 100, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ margin: "-200px" }}
@@ -172,15 +172,15 @@ function ProjectSection({
                   <img
                     src={image}
                     alt={title}
-                    className="relative w-[600px] h-[400px] object-cover rounded-2xl"
+                    className="relative w-[80vmin] h-[50vmin] object-fit rounded-2xl"
                   />
                 </motion.div>
               </div>
 
               <div
-                className={`flex ${
+                className={`expanded-container flex ${
                   number % 2 === 0 ? "flex-row-reverse" : "flex-row"
-                } justify-between items-center w-full my-12`}
+                } justify-between items-center w-full my-12 h-full`}
               >
                 <motion.div
                   initial={{ x: number % 2 === 0 ? 100 : -100, opacity: 0 }}
@@ -191,6 +191,7 @@ function ProjectSection({
                     delay: 0.4,
                     ease: "easeOut",
                   }}
+                  className="w-[100%] mx-8"
                 >
                   <p>{description}</p>
                 </motion.div>
@@ -206,12 +207,12 @@ function ProjectSection({
                   <img
                     src={descriptionImage}
                     alt={title}
-                    className="relative w-[400px] h-[300px] object-cover rounded-2xl"
+                    className="relative w-[50vw] h-[35vh] object-fit rounded-2xl"
                   />
                 </motion.div>
               </div>
               <div
-                className={`flex ${
+                className={`expanded-container flex ${
                   number % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 } justify-between items-center w-full my-12`}
               >
@@ -224,8 +225,9 @@ function ProjectSection({
                     delay: 0.4,
                     ease: "easeOut",
                   }}
+                  className="w-[100%] mx-8"
                 >
-                  <p>{challenges}</p>
+                  <p>{tech}</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -239,7 +241,7 @@ function ProjectSection({
                   <img
                     src={challengesImage}
                     alt={title}
-                    className="relative w-[400px] h-[300px] object-cover rounded-2xl"
+                    className="relative w-[40vw] h-[50vh] object-cover rounded-2xl"
                   />
                 </motion.div>
               </div>

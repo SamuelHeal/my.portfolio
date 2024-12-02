@@ -21,6 +21,8 @@
 
 .word {
   transition: opacity 250ms ease;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 #text:has(.fancy:hover) .word:not(.fancy:hover) {
@@ -102,4 +104,14 @@
 
 .fancy:hover > .outer:nth-child(12) {
   transform: translate(90%, -15%) rotate(-13deg);
+}
+
+@media (max-width: 480px) {
+  #fancy-text {
+    display: none;
+  }
+
+  h1.hidden {
+    display: block;
+  }
 }

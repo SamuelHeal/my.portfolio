@@ -25,6 +25,14 @@ function ProjectSection({
   challengesImage: string;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePosition({ x, y });
+  };
 
   useEffect(() => {
     if (isExpanded) {
@@ -54,13 +62,18 @@ function ProjectSection({
             duration: 0.7,
             delay: 0.2,
           }}
+          onMouseMove={handleMouseMove}
+          style={{
+            perspective: "1000px",
+          }}
         >
-          <img
+          <div
             className="project-image"
-            src={image}
-            alt={title}
-            data-hoverable="true"
-          />
+            data-number={(number % 3) + 1}
+            style={{
+              backgroundImage: `url(${image})`,
+            }}
+          ></div>
         </motion.div>
         <motion.div
           className="project-text"

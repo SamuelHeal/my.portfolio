@@ -77,6 +77,9 @@ function Hero() {
           >
             Samuel Heal
           </h1>
+          <h1 className="scroll-m-20 text-7xl font-semibold text-tokyo-1 tracking-tight lg:text-9xl px-4 hidden">
+            Samuel Heal
+          </h1>
         </div>
       </div>
     </div>

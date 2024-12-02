@@ -145,7 +145,7 @@ function Projects() {
             isAtEnd ? "slide-in" : "slide-out"
           } scroll-m-20 text-5xl font-semibold tracking-tight first:mt-0 text-tokyo-1 mb-20 text-center`}
         >
-          Projects
+          Check out my work
         </h2>
         {projects.map((project, index) => (
           <ProjectSection key={index} {...project} number={index} />
